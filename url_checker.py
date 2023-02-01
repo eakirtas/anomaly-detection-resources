@@ -31,9 +31,8 @@ if __name__ == "__main__":
         lines = f.readlines()
 
     for line in lines:
-        result = re.search(']\(http(.*)\)', line)
-        if result:
-            link = "http" + result.group(1)
+        if result := re.search(']\(http(.*)\)', line):
+            link = f"http{result[1]}"
             if "github" in link or "coursera" in link:
                 manual_links.append(link)
             else:
